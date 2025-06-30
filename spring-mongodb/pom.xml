@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.nunjobiznezz.rest-query</groupId>
+        <artifactId>parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
+    </parent>
+
+    <artifactId>spring-mongodb</artifactId>
+
+    <properties>
+        <!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+        <!--        <antlr.version>4.13.2</antlr.version>-->
+        <spring.boot.version>3.2.4</spring.boot.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>core</artifactId>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.antlr</groupId>-->
+<!--            <artifactId>antlr4-runtime</artifactId>-->
+<!--            <version>${antlr.version}</version>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.9.3</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!--        <sourceDirectory>src/main/antlr4</sourceDirectory> &lt;!&ndash; Location of ANTLR grammars &ndash;&gt;-->
+        <!--        <defaultGoal>package</defaultGoal>-->
+        <plugins>
+
+            <!-- ANTLR Plugin -->
+            <plugin>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr4-maven-plugin</artifactId>
+                <version>${antlr.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>antlr4</goal>
+                        </goals>
+                        <!--                        <id>generate-sources</id>-->
+                        <!--                        <phase>generate-sources</phase>-->
+                        <configuration>
+                            <sourceDirectory>core/src/main/antlr4</sourceDirectory>
+                            <!--                            <includes>-->
+                            <!--                                <include>**/*.g4</include>-->
+                            <!--                            </includes>-->
+                            <outputDirectory>${project.build.directory}/generated-sources/antlr</outputDirectory>
+                            <visitor>true</visitor>
+                            <listener>true</listener>
+                            <!-- Pass the package name for generated classes -->
+                            <arguments>
+                                <argument>-package</argument>
+                                <argument>com.nunjobiznezz.rest.query</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Compile the generated sources -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <!--                <version>3.x</version>-->
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                    <generatedSourcesDirectory>${project.build.directory}/generated-sources/antlr
+                    </generatedSourcesDirectory>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.khubla.antlr</groupId>
+                <artifactId>antlr4test-maven-plugin</artifactId>
+                <version>1.20</version>
+                <configuration>
+                    <verbose>false</verbose>
+                    <showTree>false</showTree>
+                    <entryPoint>query</entryPoint>
+                    <grammarName>RestQuery</grammarName>
+                    <packageName>com.nunjobiznezz.rest.query</packageName>
+                    <exampleFiles>examples/</exampleFiles>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

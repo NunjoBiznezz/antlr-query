@@ -1,0 +1,2 @@
+givenName ~ /^doug/i
+familyName ~ /^Bercot/s

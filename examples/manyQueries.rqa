@@ -1,0 +1,3 @@
+(fieldName IN [ 1, 2, 3, 4, 5 ])
+( (startTime >= 2025-01-07T05:00:00.000Z) AND ( (endDate > 2025-01-07T05:00:00.000Z) OR (y < 12) ) )
+((startTime >= 2025-01-13T00:00:00.000Z) AND (startTime <= 2025-01-24T00:00:00.000Z)) OR ((endTime >= 2025-01-13T00:00:00.000Z) AND (endTime <= 2025-01-24T00:00:00.000Z))

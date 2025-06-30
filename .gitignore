@@ -1,0 +1,5 @@
+/gen/
+/tmp/
+/src/main/antlr4/com/nunjobiznezz/rest/query/gen/
+/src/generated/
+/antlr-plugin/

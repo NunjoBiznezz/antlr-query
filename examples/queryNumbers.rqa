@@ -1,0 +1,1 @@
+((startTime >= 21.5) AND ((x > 3) OR (y < 12)))

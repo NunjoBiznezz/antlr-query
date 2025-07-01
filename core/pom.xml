@@ -6,12 +6,12 @@
 
     <parent>
         <groupId>com.nunjobiznezz.rest-query</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>rest-query-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
 
-    <artifactId>core</artifactId>
+    <artifactId>rest-query-core</artifactId>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

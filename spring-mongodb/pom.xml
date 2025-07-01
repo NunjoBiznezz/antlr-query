@@ -12,6 +12,7 @@
     </parent>
 
     <artifactId>rest-query-spring-mongodb</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
         <spring.boot.version>3.2.4</spring.boot.version>

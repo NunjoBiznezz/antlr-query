@@ -31,9 +31,21 @@
     </dependencies>
 
     <build>
-<!--        <sourceDirectory>src/main/antlr4</sourceDirectory> &lt;!&ndash; Location of ANTLR grammars &ndash;&gt;-->
-<!--        <defaultGoal>package</defaultGoal>-->
+
         <plugins>
+
+
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <generatedSourcesDirectory>${project.build.directory}/generated-sources/antlr</generatedSourcesDirectory>
+                </configuration>
+            </plugin>
 
             <!-- ANTLR Plugin -->
             <plugin>
@@ -44,14 +56,12 @@
                         <goals>
                             <goal>antlr4</goal>
                         </goals>
-                        <!--                        <id>generate-sources</id>-->
-                        <!--                        <phase>generate-sources</phase>-->
+                        <phase>generate-sources</phase>
                         <configuration>
                             <sourceDirectory>src/main/antlr4</sourceDirectory>
                             <includes>
                                 <include>**/*.g4</include>
                             </includes>
-                            <outputDirectory>${project.build.directory}/generated-sources/antlr</outputDirectory>
                             <visitor>true</visitor>
                             <listener>true</listener>
                             <!-- Pass the package name for generated classes -->
@@ -64,18 +74,45 @@
                 </executions>
             </plugin>
 
-            <!-- Compile the generated sources -->
+            <!-- Add Generated Sources to Compile Source Set -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <generatedSourcesDirectory>${project.build.directory}/generated-sources/antlr</generatedSourcesDirectory>
-                </configuration>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.4.0</version>
+                <executions>
+                    <!-- Add sources for main compilation -->
+                    <execution>
+                        <id>add-main-sources</id>
+                        <phase>generate-sources</phase> <!-- Bind it to generate-sources phase -->
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/antlr</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                    <!--                    &lt;!&ndash; Add sources for test compilation &ndash;&gt;-->
+                    <!--                    <execution>-->
+                    <!--                        <id>add-test-sources</id>-->
+                    <!--                        <phase>generate-test-sources</phase> &lt;!&ndash; Bind it to generate-test-sources phase &ndash;&gt;-->
+                    <!--                        <goals>-->
+                    <!--                            <goal>add-test-source</goal>-->
+                    <!--                        </goals>-->
+                    <!--                        <configuration>-->
+                    <!--                            <sources>-->
+                    <!--                                <source>${project.build.directory}/generated-sources/antlr</source>-->
+                    <!--                            </sources>-->
+                    <!--                        </configuration>-->
+                    <!--                    </execution>-->
+                </executions>
             </plugin>
 
             <plugin>
                 <groupId>com.khubla.antlr</groupId>
                 <artifactId>antlr4test-maven-plugin</artifactId>
+                <version>1.18</version>
                 <configuration>
                     <verbose>false</verbose>
                     <showTree>false</showTree>
@@ -86,6 +123,7 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <phase>test</phase>
                         <goals>
                             <goal>test</goal>
                         </goals>

@@ -11,9 +11,12 @@
         <sourceOutputDir name="target/generated-sources/antlr" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="rest-query-grammar" />
         <module name="antlr-query-spring-mongodb" />
-        <module name="antlr-query-core" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="antlr-query-grammar" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

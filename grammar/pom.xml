@@ -11,7 +11,7 @@
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
 
-    <artifactId>rest-query-core</artifactId>
+    <artifactId>rest-query-grammar</artifactId>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -33,7 +33,6 @@
     <build>
 
         <plugins>
-
 
             <!-- Maven Compiler Plugin -->
             <plugin>
@@ -93,22 +92,10 @@
                             </sources>
                         </configuration>
                     </execution>
-                    <!--                    &lt;!&ndash; Add sources for test compilation &ndash;&gt;-->
-                    <!--                    <execution>-->
-                    <!--                        <id>add-test-sources</id>-->
-                    <!--                        <phase>generate-test-sources</phase> &lt;!&ndash; Bind it to generate-test-sources phase &ndash;&gt;-->
-                    <!--                        <goals>-->
-                    <!--                            <goal>add-test-source</goal>-->
-                    <!--                        </goals>-->
-                    <!--                        <configuration>-->
-                    <!--                            <sources>-->
-                    <!--                                <source>${project.build.directory}/generated-sources/antlr</source>-->
-                    <!--                            </sources>-->
-                    <!--                        </configuration>-->
-                    <!--                    </execution>-->
                 </executions>
             </plugin>
 
+            <!-- Test grammar against input files -->
             <plugin>
                 <groupId>com.khubla.antlr</groupId>
                 <artifactId>antlr4test-maven-plugin</artifactId>

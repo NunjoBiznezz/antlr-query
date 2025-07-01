@@ -15,7 +15,7 @@
     </properties>
 
     <modules>
-        <module>core</module>
+        <module>grammar</module>
         <module>spring-mongodb</module>
     </modules>
 
@@ -45,16 +45,8 @@
                     <version>3.10.1</version>
                     <configuration>
                         <release>17</release>
-<!--                        <source>${java.version}</source>-->
-<!--                        <target>${java.version}</target>-->
                     </configuration>
                 </plugin>
-
-<!--                <plugin>-->
-<!--                    <groupId>com.khubla.antlr</groupId>-->
-<!--                    <artifactId>antlr4test-maven-plugin</artifactId>-->
-<!--                    <version>1.11</version>-->
-<!--                </plugin>-->
 
                 <!-- ANTLR Plugin -->
                 <plugin>
@@ -62,7 +54,6 @@
                     <artifactId>antlr4-maven-plugin</artifactId>
                     <version>${antlr.version}</version>
                 </plugin>
-
             </plugins>
         </pluginManagement>
     </build>

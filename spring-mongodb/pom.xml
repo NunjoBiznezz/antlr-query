@@ -14,8 +14,6 @@
     <artifactId>rest-query-spring-mongodb</artifactId>
 
     <properties>
-        <!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
-        <!--        <antlr.version>4.13.2</antlr.version>-->
         <spring.boot.version>3.2.4</spring.boot.version>
     </properties>
 
@@ -23,14 +21,8 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <version>0.0.1-SNAPSHOT</version>
-            <artifactId>rest-query-core</artifactId>
+            <artifactId>rest-query-grammar</artifactId>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>org.antlr</groupId>-->
-<!--            <artifactId>antlr4-runtime</artifactId>-->
-<!--            <version>${antlr.version}</version>-->
-<!--        </dependency>-->
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -46,8 +38,6 @@
     </dependencies>
 
     <build>
-        <!--        <sourceDirectory>src/main/antlr4</sourceDirectory> &lt;!&ndash; Location of ANTLR grammars &ndash;&gt;-->
-        <!--        <defaultGoal>package</defaultGoal>-->
         <plugins>
 
             <!-- ANTLR Plugin -->

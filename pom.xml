@@ -57,4 +57,13 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub NunjoBiznezz Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/NunjoBiznezz/rest-query</url>
+        </repository>
+    </distributionManagement>
+
 </project>

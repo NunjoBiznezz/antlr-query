@@ -12,6 +12,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="rest-query-grammar" />
+        <module name="rest-query-spring-mongodb" />
         <module name="antlr-query-spring-mongodb" />
       </profile>
     </annotationProcessing>
